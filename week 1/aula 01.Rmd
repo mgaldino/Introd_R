@@ -120,4 +120,42 @@ print(y)
 print(x)
 
 ## mais fácil de ver o que está acontecendo, certo? (espero que sim!)
+```
+
+# Tipos Lógicos e Operações lógicas
+
+Nós vimos que o R comporta tipos lógicos. Em programação, todo programa de computado tem como base a lógica.
+Assim, é importante que n'so possamos armazenar objetos que sejam verdadeiros ou falsos. E que possamos fazer operaçoes sobre esses objetos
+
 ```{r}
+x <- 3
+y <- 3
+# será que y é igual a x?
+x == y
+```
+
+No exemplo aciam, usamos o operador _==_ para testar se dois objetos são iguais. Não podemos escrever apenas ```x = y```, porque o R irá entender que estamos atribuindo o valor de y a x (pois já vimos que _=_ e _<-_ são a mesma coisa no R). Assim, no R, usamos _==_ quando queremos saber se dois objetos são exatamente iguais.
+
+Outros operadores lógicos importantes são:
+_!=_ que testa se dois objetos não são iguais (diferentes);
+
+_>_ que testa se um objeto é maior que outro;
+
+_<_ menor.
+
+Vamos a alguns exemplos
+```{r}
+x <- 3
+y <- 4
+x == 3
+x != y
+x < 3
+x > 4
+z <- "abc"
+x > z # o R consegue comparar se um número é maior ou menor que um texto. Portanto, cuidado.
+w <- "A"
+w < z
+```
+
+
+
