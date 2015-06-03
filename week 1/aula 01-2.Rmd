@@ -4,7 +4,6 @@ author: "Manoel Galdino"
 date: "Wednesday, June 03, 2015"
 output: html_document
 ---
-
 Na Última aula, aprendemos a usar o R como calculador, criar objetos e vimos que temos alguns tipos de objetos simples. Na aula de hoje, iremos aprender mais tipos de objetos, com destaque para o data.frame.
 
 No R, quando criamos ``` x <- 3 ``` estamos na verdade criando um vetor de tamanho 1. Um vetor nada mais é que um conjunto de elementos em sequencias.
@@ -15,132 +14,154 @@ print(x)
 
 ```
 
-Nós criamos um vetor, chamado de x, que tem e elementos, os números 1, 2 e 3. Eu posso criar um vetor com quaisquer elementos que eu quiser, desde que todos sejam do mesmo tipo.
+Nós criamos um vetor, chamado de x, que tem 3 elementos, os números 1, 2 e 3. Eu posso criar um vetor com quaisquer elementos que eu quiser, desde que todos sejam do mesmo tipo.
 
 ```{r}
 c(4, pi, 26)
 c()
 ```
-c() significa "combine". É parecido com o concatenar do Excel. Com essa função, combinamos diversos valores num único objeto, mais complexo, chamado **vetor**. Agora, _x_ será um vetor que recebe os valores 1,2,3,4,5,6. 
+c() pode ser interpretado como dizendo ao R para combinar os elementos. Com essa função, combinamos diversos elementos num único objeto, o **vetor**. Agora, _x_ será um vetor que recebe os valores 1,2,3,4,5. 
 
 ```{r}
-x = c(1,2,3,4,5,6)
+x <- c(1,2,3,4,5)
 x
 ```
 
-Notem que dessa vez, para inspecionar o valor de x, não utilizei a função _print_. No e, se eu digitar o nome do objeto e executar esse comando, normalmente o R irá imprimir na tela o conteúdo do objeto. Assim, muitas vezes nem é preciso usar a funçao print, emnora ela também funcione nesse caso. Testem aí, print(x).
+Notem que dessa vez, para inspecionar o valor de x, não utilizei a função _print_. No R, se eu digitar o nome do objeto e executar esse comando, normalmente o R irá imprimir na tela o conteúdo do objeto. Assim, muitas vezes nem é preciso usar a funçao print, emnora ela também funcione nesse caso. Testem aí, print(x).
 
-Para Instalar o R, acesso: <http://cran.r-project.org/> e selecione o tipo de instalação adequado ao seu SO.
-Vamos escolher a versão 3.2.0
+Como o R foi pensado para análise de dados, nós podemos fazer operações de soma, subtração etc. normalmente com vetores, sem muita complicação:
 
-Uma vez que voce tenha instalado o R, execute o programa.
+```{r}
+x <- c(1,2,3,4,5)
+y <- c(5,4,3,2,1)
 
-Voces verão que a interface do R no computador de voces é diferente da minha. Por isso, vamos instalar o RStudio.
-Acessem:  <http://www.rstudio.com/products/rstudio/download/> e insalem o RStudio mais adequado ao seu SO.
-
-Após a instalação, fechem o R e então executem o RStudio.
-O RStudio é uma IDE (Integrated Development Enviroment ), ou seja, um ambiente onde a programação é facilitada para seres humanos usarem linhas de comando de forma mais produtiva. Como o RStudio é grauito e bom, vamos utilizá-lo.
-
-Utilizando o R
-============================================================================
-
-Cliquem em File > New File > R script
-o RStudio dividiu a tela em duas partes. Em cima temos o Script, e em baixo o console. Inicialmente vamos digitar diretamente no console.
-
-No Console, após as mensagens iniciais do R (versão, como buscar ajuda, licença etc.), vemos o seguinte simbolo:
->
-Quando voce digitar comandos na janela do console e apertar enter, o R interpretará o comando digitado e (se for valido) irá executar o comando e produzir um resultaod (que pode ser visível ou não. A Maioria dos comandos geram outputs visíveis)
-
-Nós podemos utilizar o R como uma simples calculadora, digitando diretamente no console
-
-## R como Calculadora
-
-```{r} 
-1 + 1 
-3+5
-7*3 
-21/7
-21/5
-2^2 # exponenciação
-sqrt(4) # square root ou raiz quadrada
-4^.5 #(4 elevado a meio, ou seja, raiz quadrada de 4). O R tem muitas formas de fazer a mesma coisa.
-pi
-exp(1)
-log(10) # logaritmo natural
-log(10, 10) #logaritmo na base 10
-# etc.
+x+y #soma elemento-a-elemento
+x-y #substrai elemento-a-elemento
+x*y #multiplica elemento-a-elemento
+x/y #divide elemento-a-elemento
 ```
 
-Como voces perceberam, o R sempre dá um output na forma [1] e depois o resultado.
-O [1] significa que é o primeiro elemento do resultado. Isso pode ser útil quando tivermos mais de um elemento de resultado
-Voces entenderam isso melhor mais pra frente, não se preocupem.
-
-## Objetos
-
-No R, tudo é um objeto. Isso sginfica que o R vai armazenar na memória (ram) do computador os objetos que forem criados. Assim, quando nós digitamos "1 + 1", o R abe que "1" é um objeto (de tipo particular, numérico, mas explico depois) e o "+" é um operador binário ( trabalha com dois objetos, por isso binário), que adiciona números.
-
-E nós podemos criar nossos próprios objetos.
-Exemplo:
+Como eu falei, quando digito ```x <- 3``` estou criando um vetor de tamanho 1. Podemos verificar isso usando a função *length*, calcula quantos elementos tem um vetor, ou seja, o tamanho dele.
 
 ```{r}
-x <- 1
-print(x)
-x + 1
-x*2
-````
-
-O legal de criar objetos é que eles são armazenados na memória do computador e internamente o R vai associar um endereço a esse objeto. Assim, quando a gente procurar por "x" no R, ele tem o endereço de x e vai buscar na memória o valor de x, e fazer a operação que solicitamso com x (imprimir na tela o valor de x, somar 1 etc.)
-
-Só que quando a gente cria um objeto é preciso dizer pro R que tipo de objeto ele é. Ou, se não dissermos, o R vai tentar advinhar o tipo de objeto e armazená-lo com esse tipo "advinhado". Quase sempre isso funciona e não é preciso nos preocuparmos com isso em geral.
-
-O mais importante é que a classe de um objeto vai determinar o que podemos fazer com ele. Exemplo, a operação de adição é possivel com números, mas não com palavras. O R, portanto, precisa diferenciar número de palavras para saber quando tentar aplicar a operção de adição. Além disso, um númeor inteiro precisa e menos espaço na memória que um número real e, portanto, o R também vai diferenciar (internamente) esses dpois tipos de números, para armazenar objetos na memória de forma mais eficiente.
-
-Os tipos de dados mais comuns no R são
-numeric (números)
-character (textos ou letras)
-logical (assumem dois valores, verdadeiro ou falso)
-
-```{r}
-## Vamos ver esses tipos de dados
 x <- 3
-y <- pi
-z <- "Transparencia Brasil"
-w <- "a"
-k <- TRUE
-u <- FALSE
-p <- T
+x
+length(x)
+y <- c(3)
+y
+length(y)
+z <- c(1,2,3)
+z
+length(z)
+```
+
+
+### Criando vetores - outras formas
+
+Escrever ``` x <- c(1,2,3,4,5,6,7,8,9) ``` é boring e demorado. Um dos princípios da programação é que sempre devemos ter preguiça e procurar um jeito do computador automatizar o que estamos fazendo. Se noss objetivo é criar um vetor que é uma sequência e números inteiros, começando no 1 e terminando em 9, certamente há uma forma de dizer para o computador fazer isso pra gente, certo? Certo. E o R já pensou em como fazer isso e criou comandos que fazem isso e similares para nós. Os prinicpais comandos são **seq** e **:** . Vejamos alguns exemplos para entender o que eles fazem:
+```{r}
+## comando :
+1:9
+1:30
+1.5:10  
+20:1
+0:-10
+
+# agora seq
+
+seq(from = 1, to = 9)
+seq(from = 1, to = 9, by=3)
+seq(1, 9, 3)
+seq(5,10,length=30) #sequencia de tamanho delimitado
+seq(10,5,by=-.5)
+```
+
+
+Às vezes, queremos repetir alguns números. Podemos fazer com o comando **rep**.
+```{r}
+rep(1, times = 3)
+rep(1,3)
+rep(1:3,2)
+rep(c(1, 2, 3), times = 3)
+rep(c(1, 2, 3), each = 3)
+```
+
+Para obter ajuda sobre qualquer função, basta digitar no console **?nome da função**. Exemplo:
+
+```?rep```
+No caso de operadores, como **+**, **:**, temos que colocar entre aspas: ```?":"```
+
+### Vetores armazenando texto
+
+Em programação, é comum distinguir string de character. Uma string é uma palavra ou frase. E character são letras ou sinais (como exclamaçã, interrogação, vírgula etc.) individuais. No R, porém, não temos a distinção entre string e character, e tudo é um character, seja letra individual ou palavra/frase. Isso porque não temos um objeto para elementos individuais. Assim, uma letra é um vetor de tamanho 1, assim como uma palavra também é um vetor de tamanho 1.
+
+Para criar objetos do tipo character, basta colcocar entre aspas (simples ou duplas, não importa, desde que se abriu o texto com aspas simples, feche com simples, e o mesmo para aspas duplas)
+
+```{r}
+"Manoel"
+x <- "m"
 mode(x)
+y <- "Manoel"
 mode(y)
-mode(z)
-mode(w)
-mode(k)
-mode(u)
-mode(p)
+length(x)
+length(y)
+z <- 'm'
+x == z
+w <- "Manoel Galdino Pereira Neto"
+length(w)
+k <- c("a", "b")
+length(k)
+u <- c("Manoel", "Galdino", "Pereira", "Neto")
+u
+w
+u==w
+aux <- c(x, x) ## criando vetores combinando valores de variáveis 
+aux
 ```
 
-No R, existem duas formas de criar objetos
-com o operador "<-" e com o operador "="
-Os dois dão o mesmo resultado e não faz diferença qual voce usa, desde que no seu código voce use sempre o mesmo, para tornar mais fácil a leitura. No curso iremos usar "<-". Eu prefiro esse operador porque, para mim, ele indica que o objeto criado está recebendo um dado conteudo.
-Assim, quando escrevemos: ```x <- 3```, estamos dizendo pro R que o objeto "x", a ser criado, vai receber o conteudo "3". Se eu escrevesse ```x = 3```, o resultado seria o mesmo, mas não fica tão claro que eu tenho que ler da direita pra esquerda, isto é, que estou atribuindo 3 para x. Podemos nos confundir e achar que x está sendo atribuído a 3. Isso é mais fácil de ver se faço as seguintes operações
+Se eu quiser concatenar os elementos de **u** em um único texto, podemos usar a função **paste**, similar à função concatenar do Excel.
+
 
 ```{r}
+paste("Manoel","Galdino","Pereira","Neto")
+u
+paste(u)
+```
 
-x = 3
-y = 4
-y = x
-# o que print(y) e print(x) devem imprimir?
-
-print(y)
-print(x)
-
-# agora, comparem com o código abaixo
-x <- 3
-y <- 4
-print(x)
-print(y)
-y <- x
-print(y)
-print(x)
-
-## mais fácil de ver o que está acontecendo, certo? (espero que sim!)
+Nós podemos alterar o separador do texto, por meio do argumento **sep**:
 ```{r}
+paste("Manoel","Galdino","Pereira","Neto", sep="_")
+paste("Manoel","Galdino","Pereira","Neto", sep="")
+```
+
+
+### subseting vetor e texto
+
+Como vimos, o R não diferencia string de character. O que nos dá uma motivação pra intorduzir o índice em vetores no R. Como vimos, os vetores são compostos de elementos. Assim, se quero acessar um elemento numa posição especifica (digamos, o segundo elemento), isso é possível no R. Vejamos alguns exemplos para entender:
+```{r}
+u
+length(u)
+u[1]
+u[4]
+u[c(1,2)]
+u[1:2]
+x <- 1:3
+u[x]
+```
+
+Como podem perceber, eu posso passar outros objetos ou outras funções dentro dos colchetes, para selecionar os elementos especificos. Normalmente nós chamamos a posição do elemento de indice. Assim ```u[3]``` está pedindo ao R acesso ao elemento de **u** no índice 3.
+
+### Tipos dos elementos dos vetores
+
+Como falei, o vetor comporta um único tipo de elemento. Assim, se tentarmos criar um vetor de vários tipos diferentes, o R vai convertê-los para um mesmo tipo.
+
+
+```{r}
+letras <- c("a", "b", "c")
+num <- c(1, 2, 3)
+mix <- c(letras, num)
+class(letras)
+class(num)
+class(mix)
+mix
+```

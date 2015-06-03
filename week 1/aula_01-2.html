@@ -72,115 +72,171 @@ img {
 <pre class="r"><code>x &lt;- c(1,2,3)
 print(x)</code></pre>
 <pre><code>## [1] 1 2 3</code></pre>
-<p>Nós criamos um vetor, chamado de x, que tem e elementos, os números 1, 2 e 3. Eu posso criar um vetor com quaisquer elementos que eu quiser, desde que todos sejam do mesmo tipo.</p>
+<p>Nós criamos um vetor, chamado de x, que tem 3 elementos, os números 1, 2 e 3. Eu posso criar um vetor com quaisquer elementos que eu quiser, desde que todos sejam do mesmo tipo.</p>
 <pre class="r"><code>c(4, pi, 26)</code></pre>
 <pre><code>## [1]  4.000000  3.141593 26.000000</code></pre>
 <pre class="r"><code>c()</code></pre>
 <pre><code>## NULL</code></pre>
-<p>c() significa “combine”. É parecido com o concatenar do Excel. Com essa função, combinamos diversos valores num único objeto, mais complexo, chamado <strong>vetor</strong>. Agora, <em>x</em> será um vetor que recebe os valores 1,2,3,4,5,6.</p>
-<pre class="r"><code>x = c(1,2,3,4,5,6)
+<p>c() pode ser interpretado como dizendo ao R para combinar os elementos. Com essa função, combinamos diversos elementos num único objeto, o <strong>vetor</strong>. Agora, <em>x</em> será um vetor que recebe os valores 1,2,3,4,5.</p>
+<pre class="r"><code>x &lt;- c(1,2,3,4,5)
 x</code></pre>
-<pre><code>## [1] 1 2 3 4 5 6</code></pre>
-<p>Notem que dessa vez, para inspecionar o valor de x, não utilizei a função <em>print</em>. No e, se eu digitar o nome do objeto e executar esse comando, normalmente o R irá imprimir na tela o conteúdo do objeto. Assim, muitas vezes nem é preciso usar a funçao print, emnora ela também funcione nesse caso. Testem aí, print(x).</p>
-<p>Para Instalar o R, acesso: <a href="http://cran.r-project.org/" class="uri">http://cran.r-project.org/</a> e selecione o tipo de instalação adequado ao seu SO. Vamos escolher a versão 3.2.0</p>
-<p>Uma vez que voce tenha instalado o R, execute o programa.</p>
-<p>Voces verão que a interface do R no computador de voces é diferente da minha. Por isso, vamos instalar o RStudio. Acessem: <a href="http://www.rstudio.com/products/rstudio/download/" class="uri">http://www.rstudio.com/products/rstudio/download/</a> e insalem o RStudio mais adequado ao seu SO.</p>
-<p>Após a instalação, fechem o R e então executem o RStudio. O RStudio é uma IDE (Integrated Development Enviroment ), ou seja, um ambiente onde a programação é facilitada para seres humanos usarem linhas de comando de forma mais produtiva. Como o RStudio é grauito e bom, vamos utilizá-lo.</p>
-<div id="utilizando-o-r" class="section level1">
-<h1>Utilizando o R</h1>
-<p>Cliquem em File &gt; New File &gt; R script o RStudio dividiu a tela em duas partes. Em cima temos o Script, e em baixo o console. Inicialmente vamos digitar diretamente no console.</p>
-<p>No Console, após as mensagens iniciais do R (versão, como buscar ajuda, licença etc.), vemos o seguinte simbolo: &gt; Quando voce digitar comandos na janela do console e apertar enter, o R interpretará o comando digitado e (se for valido) irá executar o comando e produzir um resultaod (que pode ser visível ou não. A Maioria dos comandos geram outputs visíveis)</p>
-<p>Nós podemos utilizar o R como uma simples calculadora, digitando diretamente no console</p>
-<div id="r-como-calculadora" class="section level2">
-<h2>R como Calculadora</h2>
-<pre class="r"><code>1 + 1 </code></pre>
-<pre><code>## [1] 2</code></pre>
-<pre class="r"><code>3+5</code></pre>
-<pre><code>## [1] 8</code></pre>
-<pre class="r"><code>7*3 </code></pre>
-<pre><code>## [1] 21</code></pre>
-<pre class="r"><code>21/7</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>21/5</code></pre>
-<pre><code>## [1] 4.2</code></pre>
-<pre class="r"><code>2^2 # exponenciação</code></pre>
-<pre><code>## [1] 4</code></pre>
-<pre class="r"><code>sqrt(4) # square root ou raiz quadrada</code></pre>
-<pre><code>## [1] 2</code></pre>
-<pre class="r"><code>4^.5 #(4 elevado a meio, ou seja, raiz quadrada de 4). O R tem muitas formas de fazer a mesma coisa.</code></pre>
-<pre><code>## [1] 2</code></pre>
-<pre class="r"><code>pi</code></pre>
-<pre><code>## [1] 3.141593</code></pre>
-<pre class="r"><code>exp(1)</code></pre>
-<pre><code>## [1] 2.718282</code></pre>
-<pre class="r"><code>log(10) # logaritmo natural</code></pre>
-<pre><code>## [1] 2.302585</code></pre>
-<pre class="r"><code>log(10, 10) #logaritmo na base 10</code></pre>
-<pre><code>## [1] 1</code></pre>
-<pre class="r"><code># etc.</code></pre>
-<p>Como voces perceberam, o R sempre dá um output na forma [1] e depois o resultado. O [1] significa que é o primeiro elemento do resultado. Isso pode ser útil quando tivermos mais de um elemento de resultado Voces entenderam isso melhor mais pra frente, não se preocupem.</p>
-</div>
-<div id="objetos" class="section level2">
-<h2>Objetos</h2>
-<p>No R, tudo é um objeto. Isso sginfica que o R vai armazenar na memória (ram) do computador os objetos que forem criados. Assim, quando nós digitamos “1 + 1”, o R abe que “1” é um objeto (de tipo particular, numérico, mas explico depois) e o “+” é um operador binário ( trabalha com dois objetos, por isso binário), que adiciona números.</p>
-<p>E nós podemos criar nossos próprios objetos. Exemplo:</p>
-<pre class="r"><code>x &lt;- 1
-print(x)</code></pre>
-<pre><code>## [1] 1</code></pre>
-<pre class="r"><code>x + 1</code></pre>
-<pre><code>## [1] 2</code></pre>
-<pre class="r"><code>x*2</code></pre>
-<pre><code>## [1] 2</code></pre>
-<p>O legal de criar objetos é que eles são armazenados na memória do computador e internamente o R vai associar um endereço a esse objeto. Assim, quando a gente procurar por “x” no R, ele tem o endereço de x e vai buscar na memória o valor de x, e fazer a operação que solicitamso com x (imprimir na tela o valor de x, somar 1 etc.)</p>
-<p>Só que quando a gente cria um objeto é preciso dizer pro R que tipo de objeto ele é. Ou, se não dissermos, o R vai tentar advinhar o tipo de objeto e armazená-lo com esse tipo “advinhado”. Quase sempre isso funciona e não é preciso nos preocuparmos com isso em geral.</p>
-<p>O mais importante é que a classe de um objeto vai determinar o que podemos fazer com ele. Exemplo, a operação de adição é possivel com números, mas não com palavras. O R, portanto, precisa diferenciar número de palavras para saber quando tentar aplicar a operção de adição. Além disso, um númeor inteiro precisa e menos espaço na memória que um número real e, portanto, o R também vai diferenciar (internamente) esses dpois tipos de números, para armazenar objetos na memória de forma mais eficiente.</p>
-<p>Os tipos de dados mais comuns no R são numeric (números) character (textos ou letras) logical (assumem dois valores, verdadeiro ou falso)</p>
-<pre class="r"><code>## Vamos ver esses tipos de dados
-x &lt;- 3
-y &lt;- pi
-z &lt;- &quot;Transparencia Brasil&quot;
-w &lt;- &quot;a&quot;
-k &lt;- TRUE
-u &lt;- FALSE
-p &lt;- T
-mode(x)</code></pre>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<pre class="r"><code>mode(y)</code></pre>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<pre class="r"><code>mode(z)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>mode(w)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>mode(k)</code></pre>
-<pre><code>## [1] &quot;logical&quot;</code></pre>
-<pre class="r"><code>mode(u)</code></pre>
-<pre><code>## [1] &quot;logical&quot;</code></pre>
-<pre class="r"><code>mode(p)</code></pre>
-<pre><code>## [1] &quot;logical&quot;</code></pre>
-<p>No R, existem duas formas de criar objetos com o operador “&lt;-” e com o operador “=” Os dois dão o mesmo resultado e não faz diferença qual voce usa, desde que no seu código voce use sempre o mesmo, para tornar mais fácil a leitura. No curso iremos usar “&lt;-”. Eu prefiro esse operador porque, para mim, ele indica que o objeto criado está recebendo um dado conteudo. Assim, quando escrevemos: <code>x &lt;- 3</code>, estamos dizendo pro R que o objeto “x”, a ser criado, vai receber o conteudo “3”. Se eu escrevesse <code>x = 3</code>, o resultado seria o mesmo, mas não fica tão claro que eu tenho que ler da direita pra esquerda, isto é, que estou atribuindo 3 para x. Podemos nos confundir e achar que x está sendo atribuído a 3. Isso é mais fácil de ver se faço as seguintes operações</p>
-<pre class="r"><code>x = 3
-y = 4
-y = x
-# o que print(y) e print(x) devem imprimir?
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p>Notem que dessa vez, para inspecionar o valor de x, não utilizei a função <em>print</em>. No R, se eu digitar o nome do objeto e executar esse comando, normalmente o R irá imprimir na tela o conteúdo do objeto. Assim, muitas vezes nem é preciso usar a funçao print, emnora ela também funcione nesse caso. Testem aí, print(x).</p>
+<p>Como o R foi pensado para análise de dados, nós podemos fazer operações de soma, subtração etc. normalmente com vetores, sem muita complicação:</p>
+<pre class="r"><code>x &lt;- c(1,2,3,4,5)
+y &lt;- c(5,4,3,2,1)
 
-print(y)</code></pre>
+x+y #soma elemento-a-elemento</code></pre>
+<pre><code>## [1] 6 6 6 6 6</code></pre>
+<pre class="r"><code>x-y #substrai elemento-a-elemento</code></pre>
+<pre><code>## [1] -4 -2  0  2  4</code></pre>
+<pre class="r"><code>x*y #multiplica elemento-a-elemento</code></pre>
+<pre><code>## [1] 5 8 9 8 5</code></pre>
+<pre class="r"><code>x/y #divide elemento-a-elemento</code></pre>
+<pre><code>## [1] 0.2 0.5 1.0 2.0 5.0</code></pre>
+<p>Como eu falei, quando digito <code>x &lt;- 3</code> estou criando um vetor de tamanho 1. Podemos verificar isso usando a função <em>length</em>, calcula quantos elementos tem um vetor, ou seja, o tamanho dele.</p>
+<pre class="r"><code>x &lt;- 3
+x</code></pre>
 <pre><code>## [1] 3</code></pre>
-<pre class="r"><code>print(x)</code></pre>
+<pre class="r"><code>length(x)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>y &lt;- c(3)
+y</code></pre>
 <pre><code>## [1] 3</code></pre>
-<pre class="r"><code># agora, comparem com o código abaixo
-x &lt;- 3
-y &lt;- 4
-print(x)</code></pre>
+<pre class="r"><code>length(y)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>z &lt;- c(1,2,3)
+z</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>length(z)</code></pre>
 <pre><code>## [1] 3</code></pre>
-<pre class="r"><code>print(y)</code></pre>
-<pre><code>## [1] 4</code></pre>
-<pre class="r"><code>y &lt;- x
-print(y)</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>print(x)</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>## mais fácil de ver o que está acontecendo, certo? (espero que sim!)</code></pre>
+<div id="criando-vetores---outras-formas" class="section level3">
+<h3>Criando vetores - outras formas</h3>
+<p>Escrever <code>x &lt;- c(1,2,3,4,5,6,7,8,9)</code> é boring e demorado. Um dos princípios da programação é que sempre devemos ter preguiça e procurar um jeito do computador automatizar o que estamos fazendo. Se noss objetivo é criar um vetor que é uma sequência e números inteiros, começando no 1 e terminando em 9, certamente há uma forma de dizer para o computador fazer isso pra gente, certo? Certo. E o R já pensou em como fazer isso e criou comandos que fazem isso e similares para nós. Os prinicpais comandos são <strong>seq</strong> e <strong>:</strong> . Vejamos alguns exemplos para entender o que eles fazem:</p>
+<pre class="r"><code>## comando :
+1:9</code></pre>
+<pre><code>## [1] 1 2 3 4 5 6 7 8 9</code></pre>
+<pre class="r"><code>1:30</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+## [24] 24 25 26 27 28 29 30</code></pre>
+<pre class="r"><code>1.5:10  </code></pre>
+<pre><code>## [1] 1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5</code></pre>
+<pre class="r"><code>20:1</code></pre>
+<pre><code>##  [1] 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1</code></pre>
+<pre class="r"><code>0:-10</code></pre>
+<pre><code>##  [1]   0  -1  -2  -3  -4  -5  -6  -7  -8  -9 -10</code></pre>
+<pre class="r"><code># agora seq
+
+seq(from = 1, to = 9)</code></pre>
+<pre><code>## [1] 1 2 3 4 5 6 7 8 9</code></pre>
+<pre class="r"><code>seq(from = 1, to = 9, by=3)</code></pre>
+<pre><code>## [1] 1 4 7</code></pre>
+<pre class="r"><code>seq(1, 9, 3)</code></pre>
+<pre><code>## [1] 1 4 7</code></pre>
+<pre class="r"><code>seq(5,10,length=30) #sequencia de tamanho delimitado</code></pre>
+<pre><code>##  [1]  5.000000  5.172414  5.344828  5.517241  5.689655  5.862069  6.034483
+##  [8]  6.206897  6.379310  6.551724  6.724138  6.896552  7.068966  7.241379
+## [15]  7.413793  7.586207  7.758621  7.931034  8.103448  8.275862  8.448276
+## [22]  8.620690  8.793103  8.965517  9.137931  9.310345  9.482759  9.655172
+## [29]  9.827586 10.000000</code></pre>
+<pre class="r"><code>seq(10,5,by=-.5)</code></pre>
+<pre><code>##  [1] 10.0  9.5  9.0  8.5  8.0  7.5  7.0  6.5  6.0  5.5  5.0</code></pre>
+<p>Às vezes, queremos repetir alguns números. Podemos fazer com o comando <strong>rep</strong>.</p>
+<pre class="r"><code>rep(1, times = 3)</code></pre>
+<pre><code>## [1] 1 1 1</code></pre>
+<pre class="r"><code>rep(1,3)</code></pre>
+<pre><code>## [1] 1 1 1</code></pre>
+<pre class="r"><code>rep(1:3,2)</code></pre>
+<pre><code>## [1] 1 2 3 1 2 3</code></pre>
+<pre class="r"><code>rep(c(1, 2, 3), times = 3)</code></pre>
+<pre><code>## [1] 1 2 3 1 2 3 1 2 3</code></pre>
+<pre class="r"><code>rep(c(1, 2, 3), each = 3)</code></pre>
+<pre><code>## [1] 1 1 1 2 2 2 3 3 3</code></pre>
+<p>Para obter ajuda sobre qualquer função, basta digitar no console <strong>?nome da função</strong>. Exemplo:</p>
+<p><code>?rep</code> No caso de operadores, como <strong>+</strong>, <strong>:</strong>, temos que colocar entre aspas: <code>?&quot;:&quot;</code></p>
 </div>
+<div id="vetores-armazenando-texto" class="section level3">
+<h3>Vetores armazenando texto</h3>
+<p>Em programação, é comum distinguir string de character. Uma string é uma palavra ou frase. E character são letras ou sinais (como exclamaçã, interrogação, vírgula etc.) individuais. No R, porém, não temos a distinção entre string e character, e tudo é um character, seja letra individual ou palavra/frase. Isso porque não temos um objeto para elementos individuais. Assim, uma letra é um vetor de tamanho 1, assim como uma palavra também é um vetor de tamanho 1.</p>
+<p>Para criar objetos do tipo character, basta colcocar entre aspas (simples ou duplas, não importa, desde que se abriu o texto com aspas simples, feche com simples, e o mesmo para aspas duplas)</p>
+<pre class="r"><code>&quot;Manoel&quot;</code></pre>
+<pre><code>## [1] &quot;Manoel&quot;</code></pre>
+<pre class="r"><code>x &lt;- &quot;m&quot;
+mode(x)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>y &lt;- &quot;Manoel&quot;
+mode(y)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>length(x)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>length(y)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>z &lt;- 'm'
+x == z</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>w &lt;- &quot;Manoel Galdino Pereira Neto&quot;
+length(w)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>k &lt;- c(&quot;a&quot;, &quot;b&quot;)
+length(k)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>u &lt;- c(&quot;Manoel&quot;, &quot;Galdino&quot;, &quot;Pereira&quot;, &quot;Neto&quot;)
+u</code></pre>
+<pre><code>## [1] &quot;Manoel&quot;  &quot;Galdino&quot; &quot;Pereira&quot; &quot;Neto&quot;</code></pre>
+<pre class="r"><code>w</code></pre>
+<pre><code>## [1] &quot;Manoel Galdino Pereira Neto&quot;</code></pre>
+<pre class="r"><code>u==w</code></pre>
+<pre><code>## [1] FALSE FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>aux &lt;- c(x, x) ## criando vetores combinando valores de variáveis 
+aux</code></pre>
+<pre><code>## [1] &quot;m&quot; &quot;m&quot;</code></pre>
+<p>Se eu quiser concatenar os elementos de <strong>u</strong> em um único texto, podemos usar a função <strong>paste</strong>, similar à função concatenar do Excel.</p>
+<pre class="r"><code>paste(&quot;Manoel&quot;,&quot;Galdino&quot;,&quot;Pereira&quot;,&quot;Neto&quot;)</code></pre>
+<pre><code>## [1] &quot;Manoel Galdino Pereira Neto&quot;</code></pre>
+<pre class="r"><code>u</code></pre>
+<pre><code>## [1] &quot;Manoel&quot;  &quot;Galdino&quot; &quot;Pereira&quot; &quot;Neto&quot;</code></pre>
+<pre class="r"><code>paste(u)</code></pre>
+<pre><code>## [1] &quot;Manoel&quot;  &quot;Galdino&quot; &quot;Pereira&quot; &quot;Neto&quot;</code></pre>
+<p>Nós podemos alterar o separador do texto, por meio do argumento <strong>sep</strong>:</p>
+<pre class="r"><code>paste(&quot;Manoel&quot;,&quot;Galdino&quot;,&quot;Pereira&quot;,&quot;Neto&quot;, sep=&quot;_&quot;)</code></pre>
+<pre><code>## [1] &quot;Manoel_Galdino_Pereira_Neto&quot;</code></pre>
+<pre class="r"><code>paste(&quot;Manoel&quot;,&quot;Galdino&quot;,&quot;Pereira&quot;,&quot;Neto&quot;, sep=&quot;&quot;)</code></pre>
+<pre><code>## [1] &quot;ManoelGaldinoPereiraNeto&quot;</code></pre>
+</div>
+<div id="subseting-vetor-e-texto" class="section level3">
+<h3>subseting vetor e texto</h3>
+<p>Como vimos, o R não diferencia string de character. O que nos dá uma motivação pra intorduzir o índice em vetores no R. Como vimos, os vetores são compostos de elementos. Assim, se quero acessar um elemento numa posição especifica (digamos, o segundo elemento), isso é possível no R. Vejamos alguns exemplos para entender:</p>
+<pre class="r"><code>u</code></pre>
+<pre><code>## [1] &quot;Manoel&quot;  &quot;Galdino&quot; &quot;Pereira&quot; &quot;Neto&quot;</code></pre>
+<pre class="r"><code>length(u)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>u[1]</code></pre>
+<pre><code>## [1] &quot;Manoel&quot;</code></pre>
+<pre class="r"><code>u[4]</code></pre>
+<pre><code>## [1] &quot;Neto&quot;</code></pre>
+<pre class="r"><code>u[c(1,2)]</code></pre>
+<pre><code>## [1] &quot;Manoel&quot;  &quot;Galdino&quot;</code></pre>
+<pre class="r"><code>u[1:2]</code></pre>
+<pre><code>## [1] &quot;Manoel&quot;  &quot;Galdino&quot;</code></pre>
+<pre class="r"><code>x &lt;- 1:3
+u[x]</code></pre>
+<pre><code>## [1] &quot;Manoel&quot;  &quot;Galdino&quot; &quot;Pereira&quot;</code></pre>
+<p>Como podem perceber, eu posso passar outros objetos ou outras funções dentro dos colchetes, para selecionar os elementos especificos. Normalmente nós chamamos a posição do elemento de indice. Assim <code>u[3]</code> está pedindo ao R acesso ao elemento de <strong>u</strong> no índice 3.</p>
+</div>
+<div id="tipos-dos-elementos-dos-vetores" class="section level3">
+<h3>Tipos dos elementos dos vetores</h3>
+<p>Como falei, o vetor comporta um único tipo de elemento. Assim, se tentarmos criar um vetor de vários tipos diferentes, o R vai convertê-los para um mesmo tipo.</p>
+<pre class="r"><code>letras &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+num &lt;- c(1, 2, 3)
+mix &lt;- c(letras, num)
+class(letras)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>class(num)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>class(mix)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>mix</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
 </div>
 
 
