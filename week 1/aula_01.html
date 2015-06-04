@@ -176,6 +176,25 @@ y &lt;- 3
 # será que y é igual a x?
 x == y</code></pre>
 <pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code># OS limites de armazenamento do computador
+
+
+x &lt;- 1/3 + 1/3 + 1/3 - 1
+y &lt;- 1/3 + 1/3 - 1 + 1/3
+z &lt;- 1/3 - 1 + 1/3 + 1/3
+w &lt;- -1 + 1/3 + 1/3 + 1/3
+x == y</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>x</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>y</code></pre>
+<pre><code>## [1] -5.551115e-17</code></pre>
+<pre class="r"><code>z</code></pre>
+<pre><code>## [1] -1.110223e-16</code></pre>
+<pre class="r"><code>w</code></pre>
+<pre><code>## [1] -1.110223e-16</code></pre>
+<pre class="r"><code>z==w</code></pre>
+<pre><code>## [1] TRUE</code></pre>
 <p>No exemplo aciam, usamos o operador <em>==</em> para testar se dois objetos são iguais. Não podemos escrever apenas <code>x = y</code>, porque o R irá entender que estamos atribuindo o valor de y a x (pois já vimos que <em>=</em> e <em>&lt;-</em> são a mesma coisa no R). Assim, no R, usamos <em>==</em> quando queremos saber se dois objetos são exatamente iguais.</p>
 <p>Outros operadores lógicos importantes são: <em>!=</em> que testa se dois objetos não são iguais (diferentes);</p>
 <p><em>&gt;</em> que testa se um objeto é maior que outro;</p>
