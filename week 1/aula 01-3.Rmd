@@ -268,52 +268,52 @@ mode(lista2[[1]])
 Quando temos uma base de dados, em geral temos dados de vários tipos. Assim, não podemos usar matrizes para banco de dados. Para isso temo o data.frame. o Data frame nada mais é que uma combinação de listas. Mas para nós, que estamos começando, podemos pensar como uma mariz que admite colunas de tipos diferentes, embora dentro de cada coluna seja sempre o mesmo tipo.
 
 ```{r}
-# df1 <- data.frame(var1=1:4, var2=rep("a", 4), var3=rep(c(T,F), each=2))
-# df1
-# mode(df1)
-# class(df1)
-# 
-# ## Para acessar as colunas, podemos fazer como lista ou matriz
-# df1$var1
-# df1[,1]
-# 
-# df1$var2
-# df1$var2[,2]
-# 
-# df1$var3[c(1,3)]
-# df1[c(1,3),2]
-# 
-# mode(df1$var1)
-# mode(df1$var2)
-# mode(df1$var3)
-# 
-# ## Nós queíamos que var 2 fosse character
-# ## o R tem um outro tip ode variável, chamado factor
-# ## variáveis categóricas
-# ## tem que usar stringsAsFactorst=F. Ver o help
-# 
-# ?data.frame
-# df1 <- data.frame(var1=1:4, var2=rep("a", 4), var3=rep(c(T,F), each=2), 
-#                   stringsAsFactors=F)
-# 
-# mode(df1$var1)
-# mode(df1$var2)
-# mode(df1$var3)
-# 
-# nrow(df)
-# ncol(df)
-# dim(df)
-# 
-# ## outra forma de acessar
-# df1["var1"]
-# df1[["var1"]]
-# 
-# # data.frame é uma lista!
-# mode(df1["var1"])
-# class(df1["var1"])
-# 
-# mode(df1[["var1"]])
-# class(df1[["var1"]])
+ df1 <- data.frame(var1=1:4, var2=rep("a", 4), var3=rep(c(T,F), each=2))
+df1
+mode(df1)
+class(df1)
+
+## Para acessar as colunas, podemos fazer como lista ou matriz
+df1$var1
+df1[,1]
+
+df1$var2
+df1[,2]
+
+df1$var3[c(1,3)]
+df1[c(1,3),2]
+
+mode(df1$var1)
+mode(df1$var2)
+mode(df1$var3)
+
+## Nós queíamos que var 2 fosse character
+## o R tem um outro tip ode variável, chamado factor
+## variáveis categóricas
+## tem que usar stringsAsFactorst=F. Ver o help
+
+?data.frame
+df1 <- data.frame(var1=1:4, var2=rep("a", 4), var3=rep(c(T,F), each=2), 
+                  stringsAsFactors=F)
+
+mode(df1$var1)
+mode(df1$var2)
+mode(df1$var3)
+
+nrow(df)
+ncol(df)
+dim(df)
+
+## outra forma de acessar
+df1["var1"]
+df1[["var1"]]
+
+# data.frame é uma lista!
+mode(df1["var1"])
+class(df1["var1"])
+
+mode(df1[["var1"]])
+class(df1[["var1"]])
 
 ## Classe é uma característica de linguagens de programação orientada a objetos
 ## Não vou entrar aqui na distinção. Não temos tempo para esse detalhe.
