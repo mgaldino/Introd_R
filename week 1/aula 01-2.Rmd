@@ -4,7 +4,7 @@ author: "Manoel Galdino"
 date: "Wednesday, June 03, 2015"
 output: html_document
 ---
-Na Última aula, aprendemos a usar o R como calculador, criar objetos e vimos que temos alguns tipos de objetos simples. Na aula de hoje, iremos aprender mais tipos de objetos, com destaque para o data.frame.
+Na Última aula, aprendemos a usar o R como calculadora, criar objetos e vimos que temos alguns tipos de objetos simples. Na aula de hoje, iremos aprender mais tipos de objetos, com destaque para o data.frame.
 
 No R, quando criamos ``` x <- 3 ``` estamos na verdade criando um vetor de tamanho 1. Um vetor nada mais é que um conjunto de elementos em sequencias.
 Ex.:
