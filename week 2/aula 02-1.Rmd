@@ -1,0 +1,112 @@
+---
+title: "Aula 2-1 - Controle de Fluxo"
+author: "Manoel Galdino"
+date: "Wednesday, June 15, 2015"
+output: html_document
+---
+Controle de Fluxo
+
+Nós iremos agora aprender um pouco sobre controle de fluxo (juntamente com alguns operadores lógicos), que e o básico da programação.
+
+A ideia do controle de fluxo é controlar (!) o fluxo (!) sequencial de instruções dada ao computador. Se digo ao computador, some 1/3, depois subtrai 1/3 etc., ele executará os comandos nessa ordem. Porém, posso querer controlar a sequencia dos comandos.
+
+```{r}
+# help do R para controle de fluxo
+?Control
+```
+
+** For loop **
+
+o comando *para* ou *for* é um loop/laço que diz ao computador para executar instruções repetidas vezes, de acordo com uma condição. A estrutura do for é:
+``` for (variável in vetor de n valores) { repita comandos n vezes}```
+
+Um exemplo vai ajudar a entender.
+Ex.
+```{r}
+# vamos repetir 10x um importante princípio da programação
+
+print("o pai do programador é a preguiça") # não me perguntem quem é a mãe!
+
+for ( i in 1:10) { 
+  print("o pai do programador é a preguiça")
+  }# se ficar tudo na mesma linha, não precisa das chaves
+
+```
+
+Como vimos, nosso contador *i*, se inicia em 1 e vai até 10. E para cada valor de i, ele executa o comando após o for loop. Vejamos mais exemplos.
+
+```{r}
+# somar números de um vetor
+myvec <- seq(1, 10, by=2) # O que vai retornar
+n <- length(myvec)
+soma <- 0 # vai guardar o resultado
+for ( i in 1:n) {
+  soma <- soma + myvec[i]
+}
+soma
+# validando resultado
+sum(myvec) == soma
+
+## produto
+
+produto <- 1 # elemento neutro da multiplicação
+for ( i in 1:n) {
+  produto = produto*myvec[i]
+}
+produto
+
+# validando
+prod(myvec)==produto
+
+# fatorial de um número
+n <- 7
+fatorial <- 1
+for ( i in n:1) {
+  fatorial <- fatorial*i 
+  }
+fatorial
+
+# validando
+factorial(7) == fatorial
+
+# exercício
+
+# dado um número real x, e um número natural n, use um foor lop para calcular a potência x^n, em que x é a base, e n o expoente # valide que seu resultado está certo comparando com a forma mais simples de exponenciação no R, x^n.
+```
+
+Temos várias formas de resolver o problema.
+Eis a minha solução.
+
+```{r}
+pot <- 1
+x <- 2
+n <- 4
+for ( i in 1:n) { pot <- x*pot}
+pot
+# validando
+pot == x^n
+```
+
+Condição se/if
+
+```{r}
+# programa que verificar se um número é par!
+
+# primeiro, vamos pedir o input do usuário
+n <- 0
+while(n < 1 ){
+  n <- readline("enter a positive integer: ")
+  n <- ifelse(grepl("\\D",n),-1,as.integer(n))
+  if(is.na(n)){break}  # breaks when hit enter
+}
+
+# agora, vamos checar se é par
+if ( n %% 2 == 0) {
+  print("número é par")
+  } else { 
+    print("número é ímpar")
+    }
+
+
+
+```
