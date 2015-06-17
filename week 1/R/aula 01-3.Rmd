@@ -1,0 +1,409 @@
+---
+title: "Aula 1-3 - Matriz, Listas e Data Frames"
+author: "Manoel Galdino"
+date: "Wednesday, June 03, 2015"
+output: html_document
+---
+Além dos vetores, no R temos as matrizes, que nada mais são que conjuntos de vetores, organizandos em colunas (ou linhas)
+Para criar uma matriz, podemos usar o comando matrix.
+Ex.:
+```{r}
+mat <- matrix(c(1,2,3), c(4,5,6)) #
+mat
+
+mat1 <- matrix(c(1,2,3), c(4,5,6), byrow=T) ## preenche a primeira coluna até o final, e só então vai pra segunda coluna
+mat1
+# para criar uma matriz vazia
+mat2 <- matrix(nrow=3, ncol=4)
+# NA significa pro R missing.
+
+```
+Numa matriz no R, todos os elementos tem de ter o mesmo tipo.
+
+Nós criamos um vetor, chamado de x, que tem 3 elementos, os números 1, 2 e 3. Eu posso criar um vetor com quaisquer elementos que eu quiser, desde que todos sejam do mesmo tipo.
+
+```{r}
+c(4, pi, 26)
+c()
+```
+c() pode ser interpretado como dizendo ao R para combinar os elementos. Com essa função, combinamos diversos elementos num único objeto, o **vetor**. Agora, _x_ será um vetor que recebe os valores 1,2,3,4,5. 
+
+```{r}
+x <- c(1,2,3,4,5)
+x
+```
+
+Notem que dessa vez, para inspecionar o valor de x, não utilizei a função _print_. No R, se eu digitar o nome do objeto e executar esse comando, normalmente o R irá imprimir na tela o conteúdo do objeto. Assim, muitas vezes nem é preciso usar a funçao print, emnora ela também funcione nesse caso. Testem aí, print(x).
+
+Como o R foi pensado para análise de dados, nós podemos fazer operações de soma, subtração etc. normalmente com vetores, sem muita complicação:
+
+```{r}
+x <- c(1,2,3,4,5)
+y <- c(5,4,3,2,1)
+
+x+y #soma elemento-a-elemento
+x-y #substrai elemento-a-elemento
+x*y #multiplica elemento-a-elemento
+x/y #divide elemento-a-elemento
+```
+
+Como eu falei, quando digito ```x <- 3``` estou criando um vetor de tamanho 1. Podemos verificar isso usando a função *length*, calcula quantos elementos tem um vetor, ou seja, o tamanho dele.
+
+```{r}
+x <- 3
+x
+length(x)
+y <- c(3)
+y
+length(y)
+z <- c(1,2,3)
+z
+length(z)
+```
+
+
+### Criando vetores - outras formas
+
+Escrever ``` x <- c(1,2,3,4,5,6,7,8,9) ``` é boring e demorado. Um dos princípios da programação é que sempre devemos ter preguiça e procurar um jeito do computador automatizar o que estamos fazendo. Se noss objetivo é criar um vetor que é uma sequência e números inteiros, começando no 1 e terminando em 9, certamente há uma forma de dizer para o computador fazer isso pra gente, certo? Certo. E o R já pensou em como fazer isso e criou comandos que fazem isso e similares para nós. Os prinicpais comandos são **seq** e **:** . Vejamos alguns exemplos para entender o que eles fazem:
+```{r}
+## comando :
+1:9
+1:30
+1.5:10  
+20:1
+0:-10
+
+# agora seq
+
+seq(from = 1, to = 9)
+seq(from = 1, to = 9, by=3)
+seq(1, 9, 3)
+seq(5,10,length=30) #sequencia de tamanho delimitado
+seq(10,5,by=-.5)
+```
+
+
+Às vezes, queremos repetir alguns números. Podemos fazer com o comando **rep**.
+```{r}
+rep(1, times = 3)
+rep(1,3)
+rep(1:3,2)
+rep(c(1, 2, 3), times = 3)
+rep(c(1, 2, 3), each = 3)
+```
+
+Para obter ajuda sobre qualquer função, basta digitar no console **?nome da função**. Exemplo:
+
+```?rep```
+No caso de operadores, como **+**, **:**, temos que colocar entre aspas: ```?":"```
+
+### Vetores armazenando texto
+
+Em programação, é comum distinguir string de character. Uma string é uma palavra ou frase. E character são letras ou sinais (como exclamaçã, interrogação, vírgula etc.) individuais. No R, porém, não temos a distinção entre string e character, e tudo é um character, seja letra individual ou palavra/frase. Isso porque não temos um objeto para elementos individuais. Assim, uma letra é um vetor de tamanho 1, assim como uma palavra também é um vetor de tamanho 1.
+
+Para criar objetos do tipo character, basta colcocar entre aspas (simples ou duplas, não importa, desde que se abriu o texto com aspas simples, feche com simples, e o mesmo para aspas duplas)
+
+```{r}
+"Manoel"
+x <- "m"
+mode(x)
+y <- "Manoel"
+mode(y)
+length(x)
+length(y)
+z <- 'm'
+x == z
+w <- "Manoel Galdino Pereira Neto"
+length(w)
+k <- c("a", "b")
+length(k)
+u <- c("Manoel", "Galdino", "Pereira", "Neto")
+u
+w
+u==w
+aux <- c(x, x) ## criando vetores combinando valores de variáveis 
+aux
+```
+
+Se eu quiser concatenar os elementos de **u** em um único texto, podemos usar a função **paste**, similar à função concatenar do Excel.
+
+
+```{r}
+paste("Manoel","Galdino","Pereira","Neto")
+u
+paste(u)
+```
+
+Nós podemos alterar o separador do texto, por meio do argumento **sep**:
+```{r}
+paste("Manoel","Galdino","Pereira","Neto", sep="_")
+paste("Manoel","Galdino","Pereira","Neto", sep="")
+```
+
+
+### subseting vetor e texto
+
+Como vimos, o R não diferencia string de character. O que nos dá uma motivação pra intorduzir o índice em vetores no R. Como vimos, os vetores são compostos de elementos. Assim, se quero acessar um elemento numa posição especifica (digamos, o segundo elemento), isso é possível no R. Vejamos alguns exemplos para entender:
+```{r}
+u
+length(u)
+u[1]
+u[4]
+u[c(1,2)]
+u[1:2]
+x <- 1:3
+u[x]
+```
+
+Como podem perceber, eu posso passar outros objetos ou outras funções dentro dos colchetes, para selecionar os elementos especificos. Normalmente nós chamamos a posição do elemento de indice. Assim ```u[3]``` está pedindo ao R acesso ao elemento de **u** no índice 3.
+
+### Tipos dos elementos dos vetores
+
+Como falei, o vetor comporta um único tipo de elemento. Assim, se tentarmos criar um vetor de vários tipos diferentes, o R vai convertê-los para um mesmo tipo.
+
+
+```{r}
+letras <- c("a", "b", "c")
+num <- c(1, 2, 3)
+mix <- c(letras, num)
+class(letras)
+class(num)
+class(mix)
+mix
+```
+
+
+### Matriz
+
+No R, é útil também trabalhar com matrizes. Matrizes são coleções de vetores, arranjadas em colunas (ou linhas). Como o vetor, a matriz só pode ter elementos de um único tipo.
+
+``` {r}
+
+# olhando o help de matrix
+?matrix
+# matrix cria matriz
+# as.matriz converte em matriz
+# is.matrix testa se é matriz
+
+matrix(data=1:4, nrow=2, ncol=2)
+matrix(data=1:4, nrow=2, ncol=2, byrow=T) # preenche por linha
+matrix(1:4, 2, 2, T) ## mesma coisa. Se sequigr ordem, não precisa espeficiar qual argumento é qual. Mas é perigoso e dificulta leitura
+# use só com funções mais comuns e primeiros argumentos
+
+
+```
+
+
+## No R, podemos também fazer operaçoes aritiméticas com matriz, igual fazíamos com vetores
+
+```{r}
+mat1 <- matrix(1:4, nrow=2, ncol=2, byrow=T)
+mat2 <- mat1*2
+mat2
+mat1 + mat2
+mat1*mat2 # não é multiplicação de matrizes, mas element-wise
+
+# pra fazer multiplicaç!ao de matrizes
+mat1 %*% mat2
+
+# útil, mas não vou detalahr aqui, multiplicação de vetores (matriz linha e matriz coluna)
+
+matLinha <- matrix(1:10, nrow=10, ncol=1)
+matColuna <- matrix(1:10, nrow=1, ncol=10)
+matColuna %*% matLinha
+# equivalente a
+1*1+2*2+3*3+4*4+5*5+6*6+7*7+8*8+9*9+10*10
+
+#pra saber os dados básicos da matriz
+nrow(mat1) #número de linhas
+ncol(mat1) #número de colunas
+length (mat1) #tamanho= n linhas x n colunas
+dim(mat1) # num linhas e num colunas
+
+# Pra fazer subsetting de matriz
+mat1[1,1] # primeira linha, primeira coluna
+mat1[1,2] # primeira linha, segunda coluna
+mat1[, 1] # todas as linhas, primeira coluna
+mat1[2, ] # segunda linha, todas colunas
+mat3 <- matrix(1:8, nrow=4, ncol=2, byrow=T)
+mat3[2:3, 1 ] # linhas 2 e 3, coluna 1
+mat3[ c(1,4), 2] # linhas 1 e 4, coluna 1
+mat3[ -1, ] # toda a matriz, menos a linha 1
+mat3[ -c(1,2),] # toda a matriz, menos a linha 1 e 2
+
+```
+
+## Lista
+A Lista, no R, é como um vetor, só que cada elemento pode ser qualquer coisa e de qualquer tamanho (um vetor, uma matriz, um banco de dados, um texto, uma função etc.). E a sintaxe é um pouco diferente de um vetor.
+
+```{r}
+# para criar uma lista, usaremos list
+lista1 <- list(1:10)
+lista1
+lista2 <- list(num=1:10, mat1, teste="teste")
+lista2
+# tamanho da lista
+length(lista2)
+# lista tem 3 elementos
+## acessando o primeiro elemento
+lista2$num
+lista2[1]
+lista2[[1]]
+
+# Do Stakc Overflow: http://stackoverflow.com/questions/1169456/in-r-what-is-the-difference-between-the-and-notations-for-accessing-the
+
+#The [] method returns objects of class list, while the [[]] method returns objects whose class is determined by the type of their values.
+
+mode(lista2[1])
+mode(lista2[[1]])
+
+# portanto, em geral iremos utilizar dois colchetes, para extrair elementos
+# exceto se quisermos explicitamente que retorne uma lista. Em minha experiencia, não é o caso geral.
+
+```
+
+
+### Data.frame
+
+Quando temos uma base de dados, em geral temos dados de vários tipos. Assim, não podemos usar matrizes para banco de dados. Para isso temo o data.frame. o Data frame nada mais é que uma combinação de listas. Mas para nós, que estamos começando, podemos pensar como uma mariz que admite colunas de tipos diferentes, embora dentro de cada coluna seja sempre o mesmo tipo.
+
+```{r}
+ df1 <- data.frame(var1=1:4, var2=rep("a", 4), var3=rep(c(T,F), each=2))
+df1
+mode(df1)
+class(df1)
+
+## Para acessar as colunas, podemos fazer como lista ou matriz
+df1$var1
+df1[,1]
+
+df1$var2
+df1[,2]
+
+df1$var3[c(1,3)]
+df1[c(1,3),2]
+
+mode(df1$var1)
+mode(df1$var2)
+mode(df1$var3)
+
+## Nós queíamos que var 2 fosse character
+## o R tem um outro tip ode variável, chamado factor
+## variáveis categóricas
+## tem que usar stringsAsFactorst=F. Ver o help
+
+?data.frame
+df1 <- data.frame(var1=1:4, var2=rep("a", 4), var3=rep(c(T,F), each=2), 
+                  stringsAsFactors=F)
+
+mode(df1$var1)
+mode(df1$var2)
+mode(df1$var3)
+
+nrow(df)
+ncol(df)
+dim(df)
+
+## outra forma de acessar
+df1["var1"]
+df1[["var1"]]
+
+# data.frame é uma lista!
+mode(df1["var1"])
+class(df1["var1"])
+
+mode(df1[["var1"]])
+class(df1[["var1"]])
+
+## Classe é uma característica de linguagens de programação orientada a objetos
+## Não vou entrar aqui na distinção. Não temos tempo para esse detalhe.
+# algumas métodos só valem para algumas classes de objetos
+# no geral, falamos mais de classe que mode.
+```
+
+### carregando bibliotecas
+
+o R realmente é bom mexendo com data.frames
+Para trabalhar um pouco mais, vamos mexer em bancos de dados do R
+
+```{r}
+library(datasets) # carregando a biblioteca/pacote
+
+# lista de datasets
+library(help = "datasets")
+# Vamos trabalhar com o banco USArrests
+?USArrests # pra obter mais info sobre esse banco
+
+# vamos inspecionar o banco?
+dim(USArrests)
+nrow(USArrests)
+ncol(USArrests)
+names(USArrests)
+
+head(USArrests) #(6 primeiras linhas do banco)
+tail(USArrests) #(6 últimas linhas)
+
+class(USArrests)
+
+summary(USArrests) # função summary, resumo um vetor, matriz ou data.frame
+row.names(USArrests)
+
+# vamos criar uma coluna com o nome dos estados?
+# eles estão como row.name, mas queor que seja uma variável
+USArrests$state <- row.names(USArrests)
+head(USArrests)
+
+summary(USArrests)
+# sumary não é muito util para character
+
+# subseting
+(mediaMuder <- mean(USArrests$Murder))
+
+# retornando apenas estados cuja taxa de homicício é 2x maiorque a média
+USArrests[USArrests$Murder > 2*mediaMuder,]
+# entendendo como funciona...
+
+USArrests$Murder > mediaMuder # retorna vetor de T/F com 50 elemmentos
+# uso T e F para subsetting
+# apenas linhas T retornam..
+
+# outra forma; prefiro. Sintaxe mais intuitiva pra mim
+subset(USArrests, Murder > 2*mediaMuder)
+
+# correlação entre variáveis
+
+cor(USArrests$Murder, USArrests$UrbanPop)
+cor(USArrests$Murder, USArrests$Assault)
+cor(USArrests$Murder, USArrests$Rape)
+plot(USArrests$Murder, USArrests$Rape )
+# correlação de tudo com tudo
+# apenas variáveis numéricas
+cor(USArrests[ , -5])
+#ou
+cor ( subset(USArrests, select = Murder:Rape))
+
+# instalando pacote
+#install.packages("AER")
+library(AER)
+data("STAR")
+?STAR
+dim(STAR)
+summary(STAR)
+# muitas variáveis. Vamos olhar só as 10 primeiras
+
+summary(STAR[, 1:10])
+# Notem o número de NA
+# NA é missing data
+# chato trabalhar com NA, R tem funcionalidades especificas
+
+# vejamos a variável read1
+mean(STAR$read1)
+# pq o R retornou NA?
+# o R não sabe como tirar a média de valores faltantes (missing)
+#podemos remove-los
+mean(STAR$read1, na.rm=T)
+
+```
+
+rain.df <- read.table("http://www.stats.uwo.ca/faculty/braun/data/rnf6080.dat")
+head(rain.df)
