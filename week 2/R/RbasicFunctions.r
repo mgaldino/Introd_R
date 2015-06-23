@@ -37,6 +37,28 @@ theme_hyper <- function(angle=0, fonte="arial", size=14) {
 
 remove_acento <- function(vec, Toupper=F) {
   vec <- tolower(vec)
+  vec <- gsub('á', 'a', vec)
+  vec <- gsub('ã', 'a', vec)
+  vec <- gsub('â', 'a', vec)
+  vec <- gsub('é', 'e', vec) 
+  vec <- gsub('ê', 'e', vec)
+  vec <- gsub('í', 'i', vec)
+  vec <- gsub('ì', 'i', vec)
+  vec <- gsub('ó', 'o', vec) 
+  vec <- gsub('ô', 'o', vec)
+  vec <- gsub('õ', 'o', vec)
+  vec <- gsub('ú', 'u', vec)
+  vec <- gsub('ç', 'c', vec)
+  vec <- gsub("`", "", vec)
+  vec <- gsub("'", "", vec)
+  vec <- gsub("-", " ", vec)
+  if ( Toupper==T) vec <- toupper(vec)
+  return(vec)
+}
+
+
+remove_acento1 <- function(vec, Toupper=F) {
+  vec <- tolower(vec)
   vec <- gsub('aã', 'o', vec)
   vec <- gsub('ã”', 'o', vec)
   vec <- gsub('ãƒ', 'a', vec)
@@ -52,6 +74,9 @@ remove_acento <- function(vec, Toupper=F) {
   vec <- gsub('õ', 'o', vec)
   vec <- gsub('ú', 'u', vec)
   vec <- gsub('ç', 'c', vec)
+  vec <- gsub("`", "", vec)
+  vec <- gsub("'", "", vec)
+  vec <- gsub("-", " ", vec)
   if ( Toupper==T) vec <- toupper(vec)
   return(vec)
 }
