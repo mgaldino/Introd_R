@@ -8,41 +8,27 @@ output: html_document
 Para carregar um banco de dados no R em formato txt ou csv, a principal função é:
 *read.table*. Esta função carrega os dados para o R e deve ser atribuída a um objeto para que o banco fique armazenado na memória. Um exemplo com um banco fictício, chamado dados.csv, seria ``df <- read.table("dados.csv")``.
 
-No geral, porém, será mais complexo. A primeira coisa que devemos passar para o R é o local onde está o arquivo (diretorio). A função para tal é `` setwd(caminho)``. Para saber o caminho atual (defaul do R), basta usar ``getwd()``.
+No geral, porém, será mais complexo. A primeira coisa que devemos passar para o R é o local onde está o arquivo (diretorio). A função para tal é `` setwd("caminho")``. Para saber o caminho atual (default do R), basta usar ``getwd()``.
 
 Experimentem mudar o caminho de vocês, usando a expressão ``setwd()``. Vou dar um exemplo com minha estrutura de diretório. Utilizem algo equivalente para vocês.
 Antes, vamos guardar o caminho atual.
 
-
-# definindo diretorio
-setwd("D:\\2015\\Transparência\\dados externos\\prestacao_final_2014\\receita_candidato"")
-
-
 ```{r}
 # guardando o caminho atual
 dirAtual <- getwd()
-setwd("D:\\2015\\TB\\mulheres\\contrib2014\\dados externos") # em unix, usem /
-
-#validando que mudamos o diretório
-getwd()
-
-# voltando ao caminho antigo
-setwd(dirAtual)
 ```
 
 Então, a primeira coisa que vamos fazer é definir o diretório do R para o caminho onde está o arquivo. No meu caso, 
 ```{r}
 # definindo diretorio
-setwd("D:\\2015\\Transparência\\dados externos\\prestacao_final_2014\\receita_candidato")
+setwd("D:\\2015\\Cursos\\R\\TB\\aulas\\Introd_R\\week 2\\dados") # em unix,usem /
 ```
 
 No caso de vocês, mudem para o local certo.
 
 Agora, vamos importar o arquivo exemplo.csv. Antes, abram o arquivo no excel, para visualizarmos os dados. 
 
-```{r}
-receitas <- read.table("receitas_candidatos_2014_SP.txt", header=T, sep=";", colClasses= "character")
-```
+``receitas <- read.table("receitas_candidatos_2014_SP.txt", header=T, sep=";", colClasses= "character")``
 
 Como podem ver, o banco tem xx colunas e yy linhas. A primeira linha do banco tem o nome das colunas. Eu vou abrir no notepad, para vermos como é o banco em formato csv. Aqui vemos que está separado por ";". Agora, estamos prontos para importar no R.
 
