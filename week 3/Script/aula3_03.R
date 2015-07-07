@@ -1,7 +1,7 @@
 ## Aula 03-02
 ## Manipulação de dados com Dplyr
 
-## carregfabdos dados
+## carregandos dados
 setwd("D:\\2015\\Cursos\\R\\TB\\aulas\\Introd_R\\week 3\\Dados")
 
 load("contrib.RData")
@@ -320,7 +320,7 @@ filter(gap_genero_group1, UF== "RN")
 # De fato, mulheres maiores que homem
 ## algun outro jeito de checar? 
 # com group_by e criando boleana, onde gap[2] < gap[1]
-## Fica como exercício pra voces.
+## Fica como exercício pra vocês.
 
 
 ### Pipe operator
