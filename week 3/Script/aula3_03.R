@@ -331,3 +331,37 @@ filter(gap_genero_group1, UF== "RN")
 
 # pra facilitar a leitura do código, usaremos o pipe operator (então...)
 ## %>%
+
+## Transformando as análises com o pipe operator
+
+## Originalmente, fizemos assim:
+by_estado_genero <- group_by(base, UF, genero)
+
+rec_estado_genero <- summarise(by_estado_genero, receitaMedia = mean(receita), 
+                               qtdeCandidatos = n())
+
+gap_genero_group <- group_by(rec_estado_genero, UF)
+
+gap_genero_group1 <- arrange(gap_genero_group, UF, genero)
+
+gap_uf3 <- summarise(gap_genero_group1, 
+                     gap = receitaMedia[2] - receitaMedia[1],
+                     TotalCandidatos = sum(qtdeCandidatos),
+                     propHomem = round(qtdeCandidatos[2]/TotalCandidatos, 2))
+
+base %>% # pegue df base, então
+  group_by(UF,genero) %>% # agrupe por uf e gênero, então
+  summarise( receitaMedia = mean(receita), 
+            qtdeCandidatos = n()) %>% # summarise calculando receita média e qtdecand, então
+  group_by(UF) %>% # agrupe por UF e então
+  arrange(UF, genero) %>% # ordene por UF e gênero, então
+  summarise(gap = receitaMedia[2] - receitaMedia[1],
+            TotalCandidatos = sum(qtdeCandidatos),
+            propHomem = round(qtdeCandidatos[2]/TotalCandidatos, 2)) # e sumarize o resultado final
+  
+# E se quiser, podemos atribuir tudo pra um df
+  
+  
+
+
+
