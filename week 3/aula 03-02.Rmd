@@ -1,14 +1,13 @@
 ---
-title: "Aula 3-1 - Controle de Fluxo"
+title: "Aula 3-2 - Dplyr"
 author: "Manoel Galdino"
 date: "Wednesday, June 15, 2015"
 output: html_document
 ---
-Controle de Fluxo
+Manipulação de banco de dados com Dplyr
 
-Nós iremos agora aprender um pouco sobre controle de fluxo (juntamente com alguns operadores lógicos), que e o básico da programação.
+PRimeiro, vamos pegar alguns daods de escolas, via API
 
-A ideia do controle de fluxo é controlar (!) o fluxo (!) sequencial de instruções dado ao computador. Se digo ao computador, some 1/3, depois subtraia 1/3 etc., ele executará os comandos nessa ordem. Porém, posso querer controlar a sequência dos comandos.
 
 ```{r}
 # help do R para controle de fluxo

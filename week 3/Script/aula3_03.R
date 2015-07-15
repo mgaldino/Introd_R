@@ -360,6 +360,13 @@ base %>% # pegue df base, então
             propHomem = round(qtdeCandidatos[2]/TotalCandidatos, 2)) # e sumarize o resultado final
   
 # E se quiser, podemos atribuir tudo pra um df
+
+## More resources
+# http://datasciencelv.github.io/R-UsersGroup/2nd_Meetup/dplyr-tidyr.html#/7
+# https://rpubs.com/m_dev/tidyr-intro-and-demos
+# http://gastonsanchez.com/work/webdata/getting_web_data_r5_json_data.pdf
+# http://gastonsanchez.com/work/webdata/getting_web_data_r8_web_apis.pdf
+
   
   
 
