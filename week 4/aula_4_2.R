@@ -90,4 +90,77 @@ library(scales)
 p4 <- p4 + scale_x_continuous(labels=comma)
 p4
 
+## themes
 
+## adaptado de http://docs.ggplot2.org/dev/vignettes/themes.html
+## vamos usar os dados mpg
+
+p5 <- ggplot(mpg, aes(x = cty, y = hwy, color = factor(cyl))) +
+  geom_jitter() +
+  labs(
+    x = "milhas cidade/galões",
+    y = "milhas estrada/galões",
+    color = "Cilindrada"
+  )
+p5
+
+## objetivos
+
+# mudar a cor do display
+# mudar tamanho da fonte dos labels
+# remover grid line
+# mover a legenda para dentro do gráfico
+# mudar a cor do background
+
+p5 <- p5 +
+  scale_colour_brewer(type = "seq", palette = "Oranges")
+
+p5
+
+# o que não depende dos dados, nós usamos themes
+# básico, theme_gray()
+
+theme_gray
+theme_gray()
+
+p5 + theme_gray()
+
+p5 + theme_bw()
+
+## ou criar nosso próprio theme
+
+p5 + theme(
+  axis.text = element_text(size = 14),
+  legend.key = element_rect(fill = "navy"),
+  legend.background = element_rect(fill = "white"),
+  legend.position = c(0.14, 0.80),
+  panel.grid.major = element_line(colour = "grey40"),
+  panel.grid.minor = element_blank(),
+  panel.background = element_rect(fill = "navy")
+)
+
+## tem themes pra gráficos tipo economist, etc.
+
+## fiz um pra tb
+## Theme for Tranasparência Brasil
+
+theme_tb <- function(base_size = 12, base_family = "calibri", legenda="none", dir.Legenda="horizontal") {
+  theme(
+    line = element_line(),
+    axis.title = element_text(size=base_size),
+    axis.text = element_text(size=14),
+    axis.ticks = element_blank(),
+    axis.line = element_blank(),
+    legend.background = element_rect(),
+    legend.position = legenda,
+    legend.direction = dir.Legenda,
+    legend.box = "vertical",
+    panel.grid = element_line(colour = NULL),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    strip.background=element_rect())
+}
+
+
+  p5 + theme_tb()
